@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include('./partials/header', {title: 'Home Page'}); %>
   <body>
+    <% include ./partials/navbar %>
+    <div class="container-fluid">
+      <br>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Landing page/Home page goes here</p>
+
+    <% include ./partials/scripts %>
+    </div>
   </body>
 </html>

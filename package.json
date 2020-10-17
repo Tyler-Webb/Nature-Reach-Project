@@ -1,5 +1,5 @@
 {
-  "name": "expressbirdsnew",
+  "name": "npn",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,5 +16,17 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyler-Webb/Nature-Reach-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyler-Webb/Nature-Reach-Project/issues"
+  },
+  "homepage": "https://github.com/Tyler-Webb/Nature-Reach-Project#readme",
+  "description": ""
 }

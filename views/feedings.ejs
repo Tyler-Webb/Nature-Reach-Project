@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/header', {title: 'Home Page'}); %>
+  <body>
+    <% include ./partials/navbar %>
+    
+    <div class="container-fluid">
+        <br>
+        <h1><%= title %>
+            <button type="button" class="btn-lg btn-info float-right">+Add Feeding</button>
+        </h1>
+        <br>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Bird</th>
+            <th scope="col">Label</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10/10/20</td>
+            <td>1:00 pm</td>
+            <td>Eagle</td>
+            <td>Afternoon feeding</td>
+          </tr>
+          <tr>
+            <td>10/10/20</td>
+            <td>1:00 pm</td>
+            <td>Owl</td>
+            <td>Afternoon feeding</td>
+          </tr>
+          <tr>
+            <td>10/10/20</td>
+            <td>1:00 pm</td>
+            <td>Raven</td>
+            <td>Afternoon feeding</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <% include ./partials/scripts %>
+  </body>
+</html>
