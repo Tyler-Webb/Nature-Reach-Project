@@ -17,4 +17,17 @@ router.get('/foods', function(req, res, next) {
   res.render('settings/foods', { title: 'Foods settings' });
 });
 
+// Edit routers
+router.get('/birds/edit', function(req, res, next) {
+  res.render('settings/birdsedit', { title: 'Birds Edit' });
+});
+
+router.get('/meds/edit', function(req, res, next) {
+  res.render('settings/medsedit', { title: 'Medicines Edit' });
+});
+
+router.get('/foods/edit', function(req, res, next) {
+  res.render('settings/foodsedit', { title: 'Foods Edit' });
+});
+
 module.exports = router;
