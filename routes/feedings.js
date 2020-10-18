@@ -4,4 +4,5 @@ let feedingsController = require('../controllers/feedings controller');
 /* GET home page. */
 router.get('/', feedingsController.get_feedings);
 
+
 module.exports = router;
