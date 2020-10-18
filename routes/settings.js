@@ -1,20 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
+let settingsController = require('../controllers/settings controller');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('settings/settings', { title: 'Settings' });
-});
+router.get('/', settingsController.get_settings);
 
-router.get('/birds', function(req, res, next) {
-  res.render('settings/birds', { title: 'Birds settings' });
-});
+router.get('/birds', settingsController.get_bird_settings);
 
-router.get('/meds', function(req, res, next) {
-  res.render('settings/meds', { title: 'Medicines settings' });
-});
-router.get('/foods', function(req, res, next) {
-  res.render('settings/foods', { title: 'Foods settings' });
-});
+router.get('/meds', settingsController.get_med_settings);
+
+router.get('/foods', settingsController.get_foods_settings);
 
 module.exports = router;
