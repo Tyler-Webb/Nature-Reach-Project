@@ -1,33 +1,21 @@
 var express = require('express');
 var router = express.Router();
-
+const settingsController = require('../controllers/settings controller');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('settings/settings', { title: 'Settings' });
-});
+router.get('/', settingsController.get_settings);
 
-router.get('/birds', function(req, res, next) {
-  res.render('settings/birds', { title: 'Birds settings' });
-});
+router.get('/birds', settingsController.get_bird_settings);
 
-router.get('/meds', function(req, res, next) {
-  res.render('settings/meds', { title: 'Medicines settings' });
-});
-router.get('/foods', function(req, res, next) {
-  res.render('settings/foods', { title: 'Foods settings' });
-});
+router.get('/meds', settingsController.get_med_settings);
+
+router.get('/foods', settingsController.get_foods_settings);
 
 // Edit routers
-router.get('/birds/edit', function(req, res, next) {
-  res.render('settings/birdsedit', { title: 'Birds Edit' });
-});
 
-router.get('/meds/edit', function(req, res, next) {
-  res.render('settings/medsedit', { title: 'Medicines Edit' });
-});
+router.get('/birds/edit', settingsController.get_birds_edit);
 
-router.get('/foods/edit', function(req, res, next) {
-  res.render('settings/foodsedit', { title: 'Foods Edit' });
-});
+router.get('/meds/edit', settingsController.get_meds_edit);
+
+router.get('/foods/edit', settingsController.get_foods_edit);
 
 module.exports = router;
