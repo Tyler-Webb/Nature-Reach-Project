@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./partials/header', {title: 'Home Page'}); %>
-  
-  <body>    
+<%- include('./partials/header', {title: 'Home Page'}); %>
 
-    <br>    
+<body>
 
-    <div class="container-fluid">
-      <h1>Login</h1>
+  <br>
 
-      <br>
+  <div class="container-fluid">
+    <h1>Login</h1>
 
-    
+    <br>
 
-      <div class="container-fluid" style="width: 18rem;">        
-       
-        
-            <div class="col" col-4>
-                <input type="text" class="form-control" placeholder="Username" name="Username">
-              </div>
-              <br>
-              <div class="col" col-4>
-                <input type="text" class="form-control" placeholder="Password" name="Password">
-              </div>
-          <br>
-          <div class="col" col-4>
-            <a href="/" class="btn btn-primary">Login</a>
-          </div>
-         
-        
+
+
+    <div class="container-fluid" style="width: 18rem;">
+
+
+      <div class="col" col-4>
+        <input type="text" class="form-control" placeholder="Username" name="Username">
       </div>
-
-      
+      <br>
+      <div class="col" col-4>
+        <input type="text" class="form-control" placeholder="Password" name="Password">
+      </div>
+      <br>
+      <div class="col" col-4>
+        <a href="/" class="btn btn-primary">Login</a>
       </div>
     </div>
-    <%- include ./partials/scripts %>
-  </body>
+
+
+  </div>
+  </div>
+  <%- include ./partials/scripts %>
+</body>
+
 </html>
