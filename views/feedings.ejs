@@ -10,7 +10,7 @@
           <a href="./feedings/edit" class="btn-lg btn-info float-right">Edit Feedings</a>
         </h1>
         <br>
-    <table class="table">
+    <table id="feedingsTable" class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Date</th>
@@ -43,5 +43,11 @@
     </div>
 
     <% include ./partials/scripts %>
+
+    <script type="text/javascript">
+    $(document).ready( function () {
+        $('#feedingsTable').DataTable();
+    });
+    </script>
   </body>
 </html>

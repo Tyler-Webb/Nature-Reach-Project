@@ -12,7 +12,7 @@
       <a href="./foods/edit" class="btn-lg btn-info float-right">Edit Foods</a>
     </h1>
     <br>
-<table class="table">
+<table id="foodTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Type</th>
@@ -36,5 +36,12 @@
   </table>
 </div>
 
+<% include ../partials/scripts %>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#foodTable').DataTable();
+});
+</script>
   </body>
 </html>
