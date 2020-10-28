@@ -13,7 +13,7 @@
       <a href="./meds/create" class="btn-lg btn-info float-right">Add Meds</a>
     </h1>
     <br>
-<table class="table">
+<table id="medsTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Name</th>
@@ -37,5 +37,12 @@
   </table>
 </div>
 
+<% include ../partials/scripts %>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#medsTable').DataTable();
+});
+</script>
   </body>
 </html>
