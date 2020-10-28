@@ -30,3 +30,11 @@ exports.get_foods_edit = function(req, res) {
 exports.get_create_bird = function(req, res) {
     res.render('settings/birdscreate', { title: 'Create Bird' });
 }
+
+exports.get_create_food = function(req, res) {
+    res.render('settings/foodscreate', { title: 'Create Food' });
+}
+
+exports.get_create_medication = function(req, res) {
+    res.render('settings/medscreate', { title: 'Create Meds' });
+}
