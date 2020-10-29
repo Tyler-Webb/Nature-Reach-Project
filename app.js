@@ -3,15 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var settingsRouter = require('./routes/settings');
 var feedingsRouter = require('./routes/feedings');
 var loginRouter = require('./routes/login')
 
-var app = express();
+require('dotenv').config({path: __dirname + '/.env'});
 
+var app = express();
+mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

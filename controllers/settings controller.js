@@ -1,3 +1,4 @@
+const Bird = require('../models/bird');
 
 exports.get_settings = function(req, res) {
     res.render('settings/settings', { title: 'Settings' });
@@ -25,4 +26,38 @@ exports.get_birds_edit = function(req, res) {
 
 exports.get_foods_edit = function(req, res) {
     res.render('settings/foodsedit', { title: 'Foods Edit' });
+}
+
+exports.get_create_bird = function(req, res) {
+    res.render('settings/birdscreate', { title: 'Create Bird' });
+}
+
+exports.get_create_food = function(req, res) {
+    res.render('settings/foodscreate', { title: 'Create Food' });
+}
+
+exports.get_create_medication = function(req, res) {
+    res.render('settings/medscreate', { title: 'Create Meds' });
+}
+
+exports.post_create_bird = function(req, res) {
+
+    let enabled = false;
+    if (req.body.enabled == 'on') {
+        enabled = true;
+    }
+
+    let newBird = new Bird({
+        species: req.body.species,
+        nickName: req.body.nickname,
+        enabled: enabled
+    });
+    
+    newBird.save(function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Bird saved');
+        }
+    })
 }
