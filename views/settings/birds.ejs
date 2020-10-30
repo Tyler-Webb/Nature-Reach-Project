@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Home Page'}); %>
-  
-  <body>
-    <% include ../partials/navbar %>
+<%- include('../partials/header', {title: 'Home Page'}); %>
 
-  <div class="container-fluid">
-    <br>
-    <h1><%= title %>
-      <a href="./birds/edit" class="btn-lg btn-info float-right">Edit Bird</a>
-      <a href="./birds/create" class="btn-lg btn-info float-right">Add Bird</a>
-    </h1>
-    <br>
-<table id="birdTable" class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Species</th>
-        <th scope="col">Nickname</th>
-        <th scope="col">Active</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-        <td><input type="checkbox"></td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-        <td><input type="checkbox"></td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-        <td><input type="checkbox"></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<body>
+  <% include ../partials/navbar %>
 
-<% include ../partials/scripts %>
+  <div class="container">
+    <h1>Birds</h1>
 
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#birdTable').DataTable();
-});
-</script>
-  </body>
+    <a href="./birds/create" class="btn btn-primary">Create Bird</a>
+
+    <table id="birdTable" class="table table-bordered table-striped">
+
+      <thead>
+        <tr>
+          <td>Species</td>
+          <td>Nickname</td>
+          <td>Enabled</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+
+      <% for(var i=0; i < data.length; i++) { %>
+      <tr>
+        <td><%=data[i].species%></td>
+        <td><%=data[i].nickName%></td>
+        <td><%=data[i].enabled%></td>
+        <td></td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+
+  <% include ../partials/scripts %>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#birdTable').DataTable();
+    });
+  </script>
+</body>
+
 </html>
