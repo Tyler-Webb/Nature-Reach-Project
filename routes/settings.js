@@ -23,5 +23,7 @@ router.get('/foods/edit', settingsController.get_foods_edit);
 router.get('/birds/create', settingsController.get_create_bird);
 router.post('/birds/create', settingsController.post_create_bird);
 router.get('/foods/create', settingsController.get_create_food);
+router.post('/foods/create', settingsController.post_create_food);
 router.get('/meds/create', settingsController.get_create_medication);
+router.post('/meds/create', settingsController.post_create_med);
 module.exports = router;

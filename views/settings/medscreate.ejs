@@ -9,13 +9,14 @@
         <h1><%= title %></h1>
         <p>Create Medication</p>
         <div class="container-fluid" style="width: 18rem;">
-            <div class="col" col-4>
-                <input type="text" class="form-control" placeholder="Name of medication" name="medname">
-            </div>
-            <br>
-                <a href="/" class="btn btn-primary">Create</a>
-            </div>
-
+            <form method ="POST" action="/settings/meds/create">
+                <div class="col" col-4>
+                    <input type="text" class="form-control" placeholder="Name of medication" name="nameofmedication">
+                </div>
+                <div>
+                    <button type="submit" class="btn-btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
     <% include ../partials/scripts %>
