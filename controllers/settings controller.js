@@ -7,10 +7,6 @@ exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
 }
 
-exports.get_bird_settings = function (req, res) {
-    res.render('settings/birds', { title: 'Birds settings' });
-}
-
 exports.get_med_settings = function (req, res) {
     res.render('settings/meds', { title: 'Medicines settings' });
 }
@@ -92,6 +88,16 @@ exports.post_create_med = function (req, res) {
             console.log(err);
         } else {
             console.log('Medication saved');
+        }
+    })
+}
+
+exports.get_birds = function(req, res) {
+    Bird.find({}, function (err, birds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/birds', { data: birds });
         }
     })
 }
