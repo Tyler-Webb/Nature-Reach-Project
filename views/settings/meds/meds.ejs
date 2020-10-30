@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Home Page'}); %>
+  <%- include('../../partials/header', {title: 'Home Page'}); %>
   
   <body>
-    <% include ../partials/navbar %>
-
+    <% include ../../partials/navbar %>
 
   <div class="container-fluid">
     <br>
     <h1><%= title %>
-      <a href="./foods/edit" class="btn-lg btn-info float-right">Edit Foods</a>
-      <a href="./foods/create" class="btn-lg btn-info float-right">Add Food</a>
+      <a href="./meds/edit" class="btn-lg btn-info float-right">Edit Meds</a>
+      <a href="./meds/create" class="btn-lg btn-info float-right">Add Meds</a>
     </h1>
     <br>
-<table id="foodTable" class="table table-bordered table-striped">
+<table id="medsTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Weight</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
@@ -37,11 +36,11 @@
   </table>
 </div>
 
-<% include ../partials/scripts %>
+<% include ../../partials/scripts %>
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#foodTable').DataTable();
+    $('#medsTable').DataTable();
 });
 </script>
   </body>

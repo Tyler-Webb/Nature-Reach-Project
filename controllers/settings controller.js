@@ -8,39 +8,39 @@ exports.get_settings = function (req, res) {
 }
 
 exports.get_bird_settings = function (req, res) {
-    res.render('settings/birds', { title: 'Birds settings' });
+    res.render('settings/birds/birds', { title: 'Birds settings' });
 }
 
 exports.get_med_settings = function (req, res) {
-    res.render('settings/meds', { title: 'Medicines settings' });
+    res.render('settings/meds/meds', { title: 'Medicines settings' });
 }
 
 exports.get_foods_settings = function (req, res) {
-    res.render('settings/foods', { title: 'Foods settings' });
+    res.render('settings/foods/foods', { title: 'Foods settings' });
 }
 
 exports.get_meds_edit = function (req, res) {
-    res.render('settings/medsedit', { title: 'Medicines Edit' });
+    res.render('settings/meds/medsedit', { title: 'Medicines Edit' });
 }
 
 exports.get_birds_edit = function (req, res) {
-    res.render('settings/birdsedit', { title: 'Birds Edit' });
+    res.render('settings/birds/birdsedit', { title: 'Birds Edit' });
 }
 
 exports.get_foods_edit = function (req, res) {
-    res.render('settings/foodsedit', { title: 'Foods Edit' });
+    res.render('settings/foods/foodsedit', { title: 'Foods Edit' });
 }
 
 exports.get_create_bird = function (req, res) {
-    res.render('settings/birdscreate', { title: 'Create Bird' });
+    res.render('settings/birds/birdscreate', { title: 'Create Bird' });
 }
 
 exports.get_create_food = function (req, res) {
-    res.render('settings/foodscreate', { title: 'Create Food' });
+    res.render('settings/foods/foodscreate', { title: 'Create Food' });
 }
 
 exports.get_create_medication = function (req, res) {
-    res.render('settings/medscreate', { title: 'Create Meds' });
+    res.render('settings/meds/medscreate', { title: 'Create Meds' });
 }
 
 exports.post_create_bird = function (req, res) {
