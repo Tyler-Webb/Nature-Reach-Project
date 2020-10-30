@@ -4,7 +4,7 @@ const settingsController = require('../controllers/settings controller');
 /* GET home page. */
 router.get('/', settingsController.get_settings);
 
-router.get('/birds', settingsController.get_bird_settings);
+router.get('/birds', settingsController.get_birds);
 
 router.get('/meds', settingsController.get_med_settings);
 
