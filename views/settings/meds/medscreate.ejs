@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<%- include('../partials/header', {title: 'Home Page'}); %>
+<%- include('../../partials/header', {title: 'Home Page'}); %>
 
 <body>
-    <% include ../partials/navbar %>
+    <% include ../../partials/navbar %>
     <div class="container-fluid">
         <br>
         <h1><%= title %></h1>
-        <p>Create Food</p>
+        <p>Create Medication</p>
         <div class="container-fluid" style="width: 18rem;">
-            <form method ="POST" action="/settings/foods/create">
+            <form method ="POST" action="/settings/meds/create">
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Name of food" name="nameoffood">
+                    <input type="text" class="form-control" placeholder="Name of medication" name="nameofmedication">
                 </div>
                 <div>
                     <button type="submit" class="btn-btn-primary">Submit</button>
@@ -19,7 +19,7 @@
             </form>
         </div>
     </div>
-    <% include ../partials/scripts %>
+    <% include ../../partials/scripts %>
 </body>
 
 </html>
