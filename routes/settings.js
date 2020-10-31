@@ -24,4 +24,6 @@ router.post('/meds/create', settingsController.post_create_med);
 
 // Delete routers
 router.get('/birds/delete', settingsController.delete_bird);
+router.get('/foods/delete', settingsController.delete_food);
+router.get('/meds/delete', settingsController.delete_med);
 module.exports = router;
