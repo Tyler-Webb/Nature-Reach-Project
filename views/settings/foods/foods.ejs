@@ -7,19 +7,26 @@
   <div class="container">
     <h1>Foods</h1>
 
-    <a href="./foods/create" class="btn btn-primary">Create Food</a>
+    <a href="./foods/create" class="btn mb-2 btn-primary">Create Food</a>
 
     <table id="foodTable" class="table table-bordered table-striped">
 
       <thead>
         <tr>
           <td>Name</td>
+          <td>Action</td>
         </tr>
       </thead>
 
       <% for(var i=0; i < data.length; i++) { %>
       <tr>
         <td><%=data[i].name%></td>
+
+        <td>
+          <a href="./foods/update?id=<%= data[i]._id %>">Update</a>
+          <a> | </a>
+          <a  href="./foods/delete?id=<%= data[i]._id %>" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+        </td>
       </tr>
       <% } %>
     </table>
