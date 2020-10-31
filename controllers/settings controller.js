@@ -3,6 +3,8 @@ const Food = require('../models/food');
 const Medication = require('../models/medication');
 const Med = require('../models/medication');
 
+// Main get pages
+
 exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
 }
@@ -14,6 +16,8 @@ exports.get_med_settings = function (req, res) {
 exports.get_foods_settings = function (req, res) {
     res.render('settings/foods/foods', { title: 'Foods settings' });
 }
+
+// Edit get pages
 
 exports.get_meds_edit = function (req, res) {
     res.render('settings/meds/medsedit', { title: 'Medicines Edit' });
@@ -27,6 +31,8 @@ exports.get_foods_edit = function (req, res) {
     res.render('settings/foods/foodsedit', { title: 'Foods Edit' });
 }
 
+// Create get pages
+
 exports.get_create_bird = function (req, res) {
     res.render('settings/birds/birdscreate', { title: 'Create Bird' });
 }
@@ -37,6 +43,30 @@ exports.get_create_food = function (req, res) {
 
 exports.get_create_medication = function (req, res) {
     res.render('settings/meds/medscreate', { title: 'Create Meds' });
+}
+
+// Update get pages
+
+exports.get_birds_update = function (req, res) {
+    res.render('settings/birds/birdsupdate', { title: 'Update Bird' });
+}
+exports.get_foods_update = function (req, res) {
+    res.render('settings/foods/foodsupdate', { title: 'Update Food' });
+}
+exports.get_meds_update = function (req, res) {
+    res.render('settings/meds/medsupdate', { title: 'Update Meds' });
+}
+
+// Exports for data
+
+exports.get_birds = function(req, res) {
+    Bird.find({}, function (err, birds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/birds/birds', { data: birds });
+        }
+    })
 }
 
 exports.post_create_bird = function (req, res) {
@@ -88,16 +118,6 @@ exports.post_create_med = function (req, res) {
             console.log(err);
         } else {
             console.log('Medication saved');
-        }
-    })
-}
-
-exports.get_birds = function(req, res) {
-    Bird.find({}, function (err, birds) {
-        if (err) {
-            console.error(err);
-        } else {
-            res.render('settings/birds/birds', { data: birds });
         }
     })
 }
