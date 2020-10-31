@@ -128,3 +128,13 @@ exports.get_meds = function(req, res) {
         }
     })
 }
+
+exports.delete_bird = function(req, res) {
+    Bird.findOneAndDelete({_id: req.query._id}, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/settings/birds')
+        }
+    })
+}
