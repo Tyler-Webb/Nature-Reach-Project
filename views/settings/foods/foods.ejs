@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../../partials/header', {title: 'Home Page'}); %>
-  
-  <body>
-    <% include ../../partials/navbar %>
+<%- include('../../partials/header', {title: 'Home Page'}); %>
 
+<body>
+  <% include ../../partials/navbar %>
+  <div class="container">
+    <h1>Foods</h1>
 
-  <div class="container-fluid">
-    <br>
-    <h1><%= title %>
-      <a href="./foods/edit" class="btn-lg btn-info float-right">Edit Foods</a>
-      <a href="./foods/create" class="btn-lg btn-info float-right">Add Food</a>
-    </h1>
-    <br>
-<table id="foodTable" class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Weight</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <a href="./foods/create" class="btn btn-primary">Create Food</a>
 
-<% include ../../partials/scripts %>
+    <table id="foodTable" class="table table-bordered table-striped">
 
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#foodTable').DataTable();
-});
-</script>
-  </body>
+      <thead>
+        <tr>
+          <td>Name</td>
+        </tr>
+      </thead>
+
+      <% for(var i=0; i < data.length; i++) { %>
+      <tr>
+        <td><%=data[i].name%></td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+
+  <% include ../../partials/scripts %>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#foodTable').DataTable();
+    });
+  </script>
+</body>
+
 </html>

@@ -1,23 +1,12 @@
 const Bird = require('../models/bird');
 const Food = require('../models/food');
 const Medication = require('../models/medication');
-const Med = require('../models/medication');
 
 // Main get pages
 
 exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
 }
-
-exports.get_med_settings = function (req, res) {
-    res.render('settings/meds/meds', { title: 'Medicines settings' });
-}
-
-exports.get_foods_settings = function (req, res) {
-    res.render('settings/foods/foods', { title: 'Foods settings' });
-}
-
-// Edit get pages
 
 exports.get_meds_edit = function (req, res) {
     res.render('settings/meds/medsedit', { title: 'Medicines Edit' });
@@ -118,6 +107,36 @@ exports.post_create_med = function (req, res) {
             console.log(err);
         } else {
             console.log('Medication saved');
+        }
+    })
+}
+
+exports.get_birds = function(req, res) {
+    Bird.find({}, function (err, birds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/birds/birds', { data: birds });
+        }
+    })
+}
+
+exports.get_foods = function(req, res) {
+    Food.find({}, function (err, foods) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/foods/foods', { data: foods });
+        }
+    })
+}
+
+exports.get_meds = function(req, res) {
+    Medication.find({}, function (err, meds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/meds/meds', { data: meds });
         }
     })
 }
