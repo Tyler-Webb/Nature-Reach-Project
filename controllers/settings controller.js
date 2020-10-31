@@ -2,6 +2,8 @@ const Bird = require('../models/bird');
 const Food = require('../models/food');
 const Medication = require('../models/medication');
 
+// Main get pages
+
 exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
 }
@@ -18,6 +20,8 @@ exports.get_foods_edit = function (req, res) {
     res.render('settings/foods/foodsedit', { title: 'Foods Edit' });
 }
 
+// Create get pages
+
 exports.get_create_bird = function (req, res) {
     res.render('settings/birds/birdscreate', { title: 'Create Bird' });
 }
@@ -28,6 +32,30 @@ exports.get_create_food = function (req, res) {
 
 exports.get_create_medication = function (req, res) {
     res.render('settings/meds/medscreate', { title: 'Create Meds' });
+}
+
+// Update get pages
+
+exports.get_birds_update = function (req, res) {
+    res.render('settings/birds/birdsupdate', { title: 'Update Bird' });
+}
+exports.get_foods_update = function (req, res) {
+    res.render('settings/foods/foodsupdate', { title: 'Update Food' });
+}
+exports.get_meds_update = function (req, res) {
+    res.render('settings/meds/medsupdate', { title: 'Update Meds' });
+}
+
+// Exports for data
+
+exports.get_birds = function(req, res) {
+    Bird.find({}, function (err, birds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/birds/birds', { data: birds });
+        }
+    })
 }
 
 exports.post_create_bird = function (req, res) {
@@ -109,6 +137,16 @@ exports.get_meds = function(req, res) {
             console.error(err);
         } else {
             res.render('settings/meds/meds', { data: meds });
+        }
+    })
+}
+
+exports.delete_bird = function(req, res) {
+    Bird.findOneAndDelete({_id: req.query._id}, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/settings/birds')
         }
     })
 }
