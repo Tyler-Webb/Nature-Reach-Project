@@ -6,14 +6,6 @@ exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
 }
 
-exports.get_med_settings = function (req, res) {
-    res.render('settings/meds/meds', { title: 'Medicines settings' });
-}
-
-exports.get_foods_settings = function (req, res) {
-    res.render('settings/foods/foods', { title: 'Foods settings' });
-}
-
 exports.get_meds_edit = function (req, res) {
     res.render('settings/meds/medsedit', { title: 'Medicines Edit' });
 }
