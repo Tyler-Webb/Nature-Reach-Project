@@ -1,7 +1,6 @@
 const Bird = require('../models/bird');
 const Food = require('../models/food');
 const Medication = require('../models/medication');
-const Med = require('../models/medication');
 
 exports.get_settings = function (req, res) {
     res.render('settings/settings', { title: 'Settings' });
@@ -98,6 +97,26 @@ exports.get_birds = function(req, res) {
             console.error(err);
         } else {
             res.render('settings/birds/birds', { data: birds });
+        }
+    })
+}
+
+exports.get_foods = function(req, res) {
+    Food.find({}, function (err, foods) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/foods/foods', { data: foods });
+        }
+    })
+}
+
+exports.get_meds = function(req, res) {
+    Medication.find({}, function (err, meds) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('settings/meds/meds', { data: meds });
         }
     })
 }
