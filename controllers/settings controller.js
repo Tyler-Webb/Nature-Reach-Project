@@ -64,6 +64,7 @@ exports.post_create_bird = function (req, res) {
             console.log(err);
         } else {
             console.log('Bird saved');
+            res.redirect('/settings/birds');
         }
     })
 
@@ -79,6 +80,7 @@ exports.post_create_food = function (req, res) {
             console.log(err);
         } else {
             console.log('Food saved');
+            res.redirect('/settings/foods');
         }
     })
 
@@ -95,6 +97,7 @@ exports.post_create_med = function (req, res) {
             console.log(err);
         } else {
             console.log('Medication saved');
+            res.redirect('/settings/meds');
         }
     })
 }
@@ -135,6 +138,26 @@ exports.delete_bird = function(req, res) {
             console.log(err);
         } else {
             res.redirect('/settings/birds')
+        }
+    })
+}
+
+exports.delete_food = function(req, res) {
+    Food.findOneAndDelete({_id: req.query._id}, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/settings/foods')
+        }
+    })
+}
+
+exports.delete_med = function(req, res) {
+    Medication.findOneAndDelete({_id: req.query._id}, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/settings/meds')
         }
     })
 }
