@@ -6,9 +6,9 @@ router.get('/', settingsController.get_settings);
 
 router.get('/birds', settingsController.get_birds);
 
-router.get('/meds', settingsController.get_med_settings);
+router.get('/meds', settingsController.get_meds);
 
-router.get('/foods', settingsController.get_foods_settings);
+router.get('/foods', settingsController.get_foods);
 
 // Edit routers
 

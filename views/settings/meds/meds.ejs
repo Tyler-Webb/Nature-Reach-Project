@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../../partials/header', {title: 'Home Page'}); %>
-  
-  <body>
-    <% include ../../partials/navbar %>
+<%- include('../../partials/header', {title: 'Home Page'}); %>
+
+<body>
+  <% include ../../partials/navbar %>
 
   <div class="container-fluid">
-    <br>
-    <h1><%= title %>
-      <a href="./meds/edit" class="btn-lg btn-info float-right">Edit Meds</a>
-      <a href="./meds/create" class="btn-lg btn-info float-right">Add Meds</a>
-    </h1>
-    <br>
-<table id="medsTable" class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-      <tr>
-        <td>10/10/20</td>
-        <td>1:00 pm</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div class="container">
+      <h1>Medications</h1>
 
-<% include ../../partials/scripts %>
+      <a href="./meds/create" class="btn btn-primary">Create Medication</a>
 
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#medsTable').DataTable();
-});
-</script>
-  </body>
+      <table id="medsTable" class="table table-bordered table-striped">
+
+        <thead>
+          <tr>
+            <td>Name</td>
+          </tr>
+        </thead>
+
+        <% for(var i=0; i < data.length; i++) { %>
+        <tr>
+          <td><%=data[i].name%></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+
+    <% include ../../partials/scripts %>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#medsTable').DataTable();
+      });
+    </script>
+</body>
+
 </html>
