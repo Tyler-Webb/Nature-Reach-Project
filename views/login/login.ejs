@@ -1,20 +1,35 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>About me</title>
+</head>
+
 <html>
-<%- include('./partials/header', {title: 'Home Page'}); %>
+<%- include('../partials/header', {title: 'Home Page'}); %>
 
-<body>
 
-  <br>
+<body style= "background-color: #FFB347;">
 
   <div class="container-fluid">
     <h1>Login</h1>
 
     <br>
-
-
-
+<div class="container-fluid" style="width: 30rem;">
+  <h1>
+    PSU Nature Reach
+  </h1>
+  <p1>
+    Welcome, please login to continue.
+  </p1>
+</div>
+<br>
     <div class="container-fluid" style="width: 18rem;">
-
 
       <div class="col" col-4>
         <input type="text" class="form-control" placeholder="Username" name="Username">
@@ -32,7 +47,7 @@
 
   </div>
   </div>
-  <%- include ./partials/scripts %>
+  <%- include ../partials/scripts %>
 </body>
 
 </html>

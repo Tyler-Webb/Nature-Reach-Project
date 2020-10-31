@@ -10,14 +10,6 @@ router.get('/meds', settingsController.get_meds);
 
 router.get('/foods', settingsController.get_foods);
 
-// Edit routers
-
-router.get('/birds/edit', settingsController.get_birds_edit);
-
-router.get('/meds/edit', settingsController.get_meds_edit);
-
-router.get('/foods/edit', settingsController.get_foods_edit);
-
 // Create routers
 
 router.get('/birds/create', settingsController.get_create_bird);
