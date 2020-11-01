@@ -20,7 +20,12 @@ router.get('/meds/create', settingsController.get_create_medication);
 router.post('/meds/create', settingsController.post_create_med);
 
 // Update routers
-//router.post('/birds/update', settingsController);
+router.get('/birds/update', settingsController.get_birds_update);
+router.get('/foods/update', settingsController.get_foods_update);
+router.get('/meds/update', settingsController.get_meds_update);
+router.post('/birds/update', settingsController.post_birds_update);
+router.post('/foods/update', settingsController.post_foods_update);
+router.post('/meds/update', settingsController.post_meds_update);
 
 // Delete routers
 router.get('/birds/delete', settingsController.delete_bird);

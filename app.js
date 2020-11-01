@@ -13,7 +13,7 @@ var loginRouter = require('./routes/login')
 require('dotenv').config({path: __dirname + '/.env'});
 
 var app = express();
-mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
