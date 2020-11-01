@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<%- include('../../partials/header', {title: 'Home Page'}); %>
+<%- include('../../partials/header', {title: 'Create Meds'}); %>
 
 <body>
     <% include ../../partials/navbar %>
-    <div class="container-fluid">
+    <div class="container">
         <br>
         <h1><%= title %></h1>
         <p>Create Medication</p>
         <div class="container-fluid" style="width: 18rem;">
             <form method ="POST" action="/settings/meds/create">
-                <div class="col" col-4>
+                <div class="form-group" col-4>
                     <input type="text" class="form-control" placeholder="Name of medication" name="nameofmedication">
                 </div>
                 <div>
