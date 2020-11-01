@@ -67,7 +67,6 @@ exports.post_create_bird = function (req, res) {
             res.redirect('/settings/birds');
         }
     })
-
 }
 
 exports.post_create_food = function (req, res) {
@@ -83,8 +82,6 @@ exports.post_create_food = function (req, res) {
             res.redirect('/settings/foods');
         }
     })
-
-
 }
 
 exports.post_create_med = function (req, res) {

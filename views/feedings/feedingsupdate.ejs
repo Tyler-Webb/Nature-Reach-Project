@@ -9,45 +9,46 @@
         <h1><%= title %></h1>
         <p>Update Feedings</p>
         <form method="POST" action="/feedings/update">
+            <input type="hidden" name="id" value="<%= data._id %>"/>
             <div class="container-fluid" style="width: 18rem;">
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Bird" name="Bird">
+                    <input type="text" class="form-control" placeholder="Bird" name="Bird" value="<%= data.Bird %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Food" name="Food">
+                    <input type="text" class="form-control" placeholder="Food" name="Food" value="<%= data.Food %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Amount Fed" name="Amount Fed">
+                    <input type="text" class="form-control" placeholder="Amount Fed" name="AmountFed" value="<%= data.AmountFed %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Leftover Food" name="Leftover Food">
+                    <input type="text" class="form-control" placeholder="Leftover Food" name="LeftoverFood" value="<%= data.LeftoverFood %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Medicine" name="Medicine">
+                    <input type="text" class="form-control" placeholder="Medicine" name="Medicine" value="<%= data.Medicine %>">
                 </div>
                 <br> 
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Goal Weight" name="Goal Weight">
+                    <input type="text" class="form-control" placeholder="Goal Weight" name="GoalWeight" value="<%= data.GoalWeight %>">
                 </div>
                 <br> 
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Actual Weight" name="Actual Weight">
+                    <input type="text" class="form-control" placeholder="Actual Weight" name="ActualWeight" value="<%= data.ActualWeight %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Weather Conditions" name="Weather Conditions">
+                    <input type="text" class="form-control" placeholder="Weather Conditions" name="WeatherConditions" value="<%= data.WeatherConditions %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Feeder" name="Feeder">
+                    <input type="text" class="form-control" placeholder="Feeder" name="Feeder" value="<%= data.Feeder %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Comments" name="Comments">
+                    <input type="text" class="form-control" placeholder="Comments" name="Comments" value="<%= data.Comments %>">
                 </div>
                 <br>
                 <div class="col" col-4>
