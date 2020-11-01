@@ -9,16 +9,22 @@
         <h1><%= title %></h1>
         <p>Update Birds</p>
         <form method="POST" action="/settings/birds/update">
+            <input type="hidden" name="id" value="<%= data._id %>"/>
             <div class="container-fluid" style="width: 18rem;">
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Species" name="species">
+                    <input type="text" class="form-control" placeholder="Species" name="species" value="<%= data.species %>">
                 </div>
                 <br>
                 <div class="col" col-4>
-                    <input type="text" class="form-control" placeholder="Nickname" name="nickname">
+                    <input type="text" class="form-control" placeholder="Nickname" name="nickname" value="<%= data.nickName %>">
                 </div>
                 <br>
                 <div class="col" col-4>
+                    <% if (data.enabled == true) { %>
+                        <input type="checkbox" class="form-check-input" id="enabled" name="enabled" checked>
+                      <% } else { %>
+                        <input type="checkbox" class="form-check-input" id="enabled" name="enabled">
+                      <% } %>
                     <input type="checkbox" class="form-check-input" name="enabled">
                     <label class="form-check-label">Enabled</label>
                 </div>

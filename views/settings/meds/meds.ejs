@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-<%- include('../../partials/header', {title: 'Home Page'}); %>
+<%- include('../../partials/header', {title: 'Meds'}); %>
 
 <body>
   <% include ../../partials/navbar %>
+  <br>
 
   <div class="container-fluid">
     <div class="container">
       <h1>Medications</h1>
 
-      <a href="./meds/create" class="btn mb-2 btn-primary">Create Medication</a>
+      <a href="./meds/create" class="btn mb-2 btn-primary">+ Create Medication</a>
 
       <table id="medsTable" class="table table-bordered table-striped">
 

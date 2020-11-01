@@ -25,18 +25,96 @@ exports.get_create_medication = function (req, res) {
 // Update get pages
 
 exports.get_birds_update = function (req, res) {
-    res.render('settings/birds/birdsupdate', { title: 'Update Bird' });
+    Bird.findOne({ _id: req.query._id }, function (err, bird) {
+
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('settings/birds/birdsupdate', { data: bird, title: 'Update Bird' });
+        }
+    });
 }
+
 exports.get_foods_update = function (req, res) {
-    res.render('settings/foods/foodsupdate', { title: 'Update Food' });
+    Food.findOne({ _id: req.query._id }, function (err, food) {
+
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('settings/foods/foodsupdate', { data: food, title: 'Update Food' });
+        }
+    });
 }
+
 exports.get_meds_update = function (req, res) {
-    res.render('settings/meds/medsupdate', { title: 'Update Meds' });
+    Medication.findOne({ _id: req.query._id }, function (err, med) {
+
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('settings/meds/medsupdate', { data: med, title: 'Update Medication' });
+        }
+    });
 }
+
+//Update post pages
+exports.post_birds_update = function (req, res) {
+    let enabled = false;
+    if (req.body.enabled == 'on') {
+        enabled = true;
+    }
+
+    const updateData = {
+        species: req.body.species,
+        nickName: req.body.nickname,
+        enabled: enabled
+    };
+    console.log(updateData);
+    Bird.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
+        if (err) {
+            // handle error
+            console.log(err);
+        } else {
+            res.redirect('/settings/birds');
+        }
+    });
+};
+
+exports.post_foods_update = function (req, res) {
+
+    const updateData = {
+        name: req.body.name
+    };
+    console.log(updateData);
+    Food.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
+        if (err) {
+            // handle error
+            console.log(err);
+        } else {
+            res.redirect('/settings/foods');
+        }
+    });
+};
+
+exports.post_meds_update = function (req, res) {
+
+    const updateData = {
+        name: req.body.name
+    };
+    console.log(updateData);
+    Medication.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
+        if (err) {
+            // handle error
+            console.log(err);
+        } else {
+            res.redirect('/settings/meds');
+        }
+    });
+};
 
 // Exports for data
 
-exports.get_birds = function(req, res) {
+exports.get_birds = function (req, res) {
     Bird.find({}, function (err, birds) {
         if (err) {
             console.error(err);
@@ -99,7 +177,7 @@ exports.post_create_med = function (req, res) {
     })
 }
 
-exports.get_birds = function(req, res) {
+exports.get_birds = function (req, res) {
     Bird.find({}, function (err, birds) {
         if (err) {
             console.error(err);
@@ -109,7 +187,7 @@ exports.get_birds = function(req, res) {
     })
 }
 
-exports.get_foods = function(req, res) {
+exports.get_foods = function (req, res) {
     Food.find({}, function (err, foods) {
         if (err) {
             console.error(err);
@@ -119,7 +197,7 @@ exports.get_foods = function(req, res) {
     })
 }
 
-exports.get_meds = function(req, res) {
+exports.get_meds = function (req, res) {
     Medication.find({}, function (err, meds) {
         if (err) {
             console.error(err);
@@ -129,8 +207,8 @@ exports.get_meds = function(req, res) {
     })
 }
 
-exports.delete_bird = function(req, res) {
-    Bird.findOneAndDelete({_id: req.query._id}, function(err) {
+exports.delete_bird = function (req, res) {
+    Bird.findOneAndDelete({ _id: req.query._id }, function (err) {
         if (err) {
             console.log(err);
         } else {
@@ -139,8 +217,8 @@ exports.delete_bird = function(req, res) {
     })
 }
 
-exports.delete_food = function(req, res) {
-    Food.findOneAndDelete({_id: req.query._id}, function(err) {
+exports.delete_food = function (req, res) {
+    Food.findOneAndDelete({ _id: req.query._id }, function (err) {
         if (err) {
             console.log(err);
         } else {
@@ -149,8 +227,8 @@ exports.delete_food = function(req, res) {
     })
 }
 
-exports.delete_med = function(req, res) {
-    Medication.findOneAndDelete({_id: req.query._id}, function(err) {
+exports.delete_med = function (req, res) {
+    Medication.findOneAndDelete({ _id: req.query._id }, function (err) {
         if (err) {
             console.log(err);
         } else {
