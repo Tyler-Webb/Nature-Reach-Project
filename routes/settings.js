@@ -21,7 +21,10 @@ router.get('/meds/create', settingsController.get_create_medication);
 router.post('/meds/create', settingsController.post_create_med);
 
 // Users routes
+router.get('/users', usersController.get_users);
 router.get('/users/create', usersController.get_create_user);
+router.post('/users/create', usersController.post_create_user);
+
 
 // Update routers
 router.get('/birds/update', settingsController.get_birds_update);
