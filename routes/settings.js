@@ -24,6 +24,10 @@ router.post('/meds/create', settingsController.post_create_med);
 router.get('/users', usersController.get_users);
 router.get('/users/create', usersController.get_create_user);
 router.post('/users/create', usersController.post_create_user);
+router.get('/users/update', usersController.get_update_user);
+router.post('/users/update', usersController.post_update_user);
+router.get('/users/delete', usersController.delete_user);
+
 
 
 // Update routers

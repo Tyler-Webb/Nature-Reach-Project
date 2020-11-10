@@ -14,6 +14,35 @@ exports.get_create_user = function(req,res) {
     res.render('settings/users/userscreate');
 }
 
+exports.get_update_user = function(req,res) {
+    User.findOne({ _id: req.query._id }, function (err, user) {
+
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('settings/users/usersupdate', { data: user, title: 'Update User' });
+        }
+    });
+}
+
+exports.post_update_user = function(req,res) {
+    const updateData = {
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        role: req.body.role
+    };
+    console.log(updateData);
+    User.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
+        if (err) {
+            // handle error
+            console.log(err);
+        } else {
+            res.redirect('/settings/users');
+        }
+    });
+}
+
 exports.post_create_user = function(req, res) {
     
     let user = new User();
@@ -33,4 +62,14 @@ exports.post_create_user = function(req, res) {
         }
     })
 
+}
+
+exports.delete_user = function(req,res) {
+    User.findOneAndDelete({ _id: req.query._id }, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/settings/users')
+        }
+    })
 }
