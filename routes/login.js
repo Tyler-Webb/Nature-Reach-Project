@@ -1,6 +1,7 @@
 let passport = require('passport');
 var express = require('express');
 var router = express.Router();
+let loginController = require('../controllers/login_controller');
 
 router.get('/', function (req, res) {
     res.render('../views/login/login', { message: req.flash('loginMessage') });
@@ -8,7 +9,7 @@ router.get('/', function (req, res) {
 
 router.get('/logout', function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 router.post('/login', passport.authenticate('local-login', {

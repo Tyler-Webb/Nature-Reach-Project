@@ -2,44 +2,46 @@ var express = require('express');
 var router = express.Router();
 const settingsController = require('../controllers/settings controller');
 const usersController = require('../controllers/users_controller');
+const authMiddleware = require('../middleware/ensureAuthenticate');
+
 /* GET home page. */
-router.get('/', settingsController.get_settings);
+router.get('/', authMiddleware.ensureAuthenticated, settingsController.get_settings);
 
-router.get('/birds', settingsController.get_birds);
+router.get('/birds', authMiddleware.ensureAuthenticated, settingsController.get_birds);
 
-router.get('/meds', settingsController.get_meds);
+router.get('/meds', authMiddleware.ensureAuthenticated, settingsController.get_meds);
 
-router.get('/foods', settingsController.get_foods);
+router.get('/foods', authMiddleware.ensureAuthenticated, settingsController.get_foods);
 
 // Create routers
 
-router.get('/birds/create', settingsController.get_create_bird);
-router.post('/birds/create', settingsController.post_create_bird);
-router.get('/foods/create', settingsController.get_create_food);
-router.post('/foods/create', settingsController.post_create_food);
-router.get('/meds/create', settingsController.get_create_medication);
-router.post('/meds/create', settingsController.post_create_med);
+router.get('/birds/create', authMiddleware.ensureAuthenticated, settingsController.get_create_bird);
+router.post('/birds/create', authMiddleware.ensureAuthenticated, settingsController.post_create_bird);
+router.get('/foods/create', authMiddleware.ensureAuthenticated, settingsController.get_create_food);
+router.post('/foods/create', authMiddleware.ensureAuthenticated, settingsController.post_create_food);
+router.get('/meds/create', authMiddleware.ensureAuthenticated, settingsController.get_create_medication);
+router.post('/meds/create', authMiddleware.ensureAuthenticated, settingsController.post_create_med);
 
 // Users routes
-router.get('/users', usersController.get_users);
-router.get('/users/create', usersController.get_create_user);
-router.post('/users/create', usersController.post_create_user);
-router.get('/users/update', usersController.get_update_user);
-router.post('/users/update', usersController.post_update_user);
-router.get('/users/delete', usersController.delete_user);
+router.get('/users', authMiddleware.ensureAuthenticated, usersController.get_users);
+router.get('/users/create', authMiddleware.ensureAuthenticated, usersController.get_create_user);
+router.post('/users/create', authMiddleware.ensureAuthenticated, usersController.post_create_user);
+router.get('/users/update', authMiddleware.ensureAuthenticated, usersController.get_update_user);
+router.post('/users/update', authMiddleware.ensureAuthenticated, usersController.post_update_user);
+router.get('/users/delete', authMiddleware.ensureAuthenticated, usersController.delete_user);
 
 
 
 // Update routers
-router.get('/birds/update', settingsController.get_birds_update);
-router.get('/foods/update', settingsController.get_foods_update);
-router.get('/meds/update', settingsController.get_meds_update);
-router.post('/birds/update', settingsController.post_birds_update);
-router.post('/foods/update', settingsController.post_foods_update);
-router.post('/meds/update', settingsController.post_meds_update);
+router.get('/birds/update', authMiddleware.ensureAuthenticated, settingsController.get_birds_update);
+router.get('/foods/update', authMiddleware.ensureAuthenticated, settingsController.get_foods_update);
+router.get('/meds/update', authMiddleware.ensureAuthenticated, settingsController.get_meds_update);
+router.post('/birds/update', authMiddleware.ensureAuthenticated, settingsController.post_birds_update);
+router.post('/foods/update', authMiddleware.ensureAuthenticated, settingsController.post_foods_update);
+router.post('/meds/update', authMiddleware.ensureAuthenticated, settingsController.post_meds_update);
 
 // Delete routers
-router.get('/birds/delete', settingsController.delete_bird);
-router.get('/foods/delete', settingsController.delete_food);
-router.get('/meds/delete', settingsController.delete_med);
+router.get('/birds/delete', authMiddleware.ensureAuthenticated, settingsController.delete_bird);
+router.get('/foods/delete', authMiddleware.ensureAuthenticated, settingsController.delete_food);
+router.get('/meds/delete', authMiddleware.ensureAuthenticated, settingsController.delete_med);
 module.exports = router;
