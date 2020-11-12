@@ -61,7 +61,7 @@ module.exports = function (passport) {
     passport.use('local-login', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
-        passReqToCallback: true
+        passReqToCallback: true,
     },
         function (req, email, password, done) {
             // find a user whose email is the same as the forms email
