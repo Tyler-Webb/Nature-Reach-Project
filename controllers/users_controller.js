@@ -35,7 +35,7 @@ exports.post_update_user = function(req,res) {
     };
     
     if (req.body.password) {
-        updateDate.password = user.generateHash(req.body.password);
+        updateData.password = user.generateHash(req.body.password);
         updateData.passwordIsExpired = true
     }
 
