@@ -26,12 +26,19 @@ exports.get_update_user = function(req,res) {
 }
 
 exports.post_update_user = function(req,res) {
+    const user = new User();
     const updateData = {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         role: req.body.role
     };
+    
+    if (req.body.password) {
+        updateDate.password = user.generateHash(req.body.password);
+        updateData.passwordIsExpired = true
+    }
+
     console.log(updateData);
     User.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
         if (err) {
@@ -52,6 +59,7 @@ exports.post_create_user = function(req, res) {
     user.lastName = req.body.lastName;
     user.password = user.generateHash(req.body.password);
     user.role = req.body.role;
+    user.passwordIsExpired = true;
 
     user.save(function(err) {
         if (err) {

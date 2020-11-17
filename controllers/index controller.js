@@ -1,3 +1,10 @@
 exports.get_index = function(req, res) {
-    res.render('index', {title: 'Express'});
+
+    if (res.locals.user.passwordIsExpired) {
+        res.render('reset');
+
+    } else {
+        res.render('index', {title: 'Express'});
+    }
+    
 }
