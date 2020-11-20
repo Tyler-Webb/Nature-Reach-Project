@@ -26,7 +26,9 @@ exports.get_feedings_create = function (req, res) {
 }
 
 exports.post_feedings_create = function (req, res) {
-let today = new Date();
+// dateFormat npm package is used here -- https://www.npmjs.com/package/dateformat
+var dateFormat = require('dateformat');
+var today=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
     let newFeedings = new feedings({
         Date: today,
         Bird: req.body.Bird,
