@@ -1,17 +1,41 @@
-const feedings = require('../models/feeding');
+const Feeding = require('../models/feeding');
 
-exports.get_feedings = function(req, res) {
-    feedings.find({}, function (err, feedings) {
+exports.get_feedings = function (req, res) {
+    Feeding.find({}, function (err, feedings) {
         if (err) {
             console.error(err);
         } else {
-            res.render('feedings/feedings', { data: feedings, title: 'Feedings'});
+            res.render('feedings/feedings', { data: feedings, title: 'Feedings' });
         }
     })
 }
 
+exports.export_feedings = async function (req, res) {
+    let csv = '';
+    const feedings = await Feeding.find({});
+
+
+    feedings.forEach((feeding) => {
+        csv += feeding.Date + ',' +
+            feeding.Bird + ',' +
+            feeding.Food + ',' +
+            feeding.AmountFed + ',' +
+            feeding.LeftoverFood + ',' +
+            feeding.Medicine + ',' +
+            feeding.GoalWeight + ',' +
+            feeding.ActualWeight + ',' +
+            feeding.WeatherConditions + ',' +
+            feeding.Feeder + ',' +
+            feeding.Comments + '\r\n'
+    });
+
+    res.header('Content-Type', 'text/csv');
+    res.attachment('feedings.csv');
+    return res.send(csv);
+}
+
 exports.get_feedings_update = function (req, res) {
-    feedings.findOne({ _id: req.query._id }, function (err, feeding) {
+    Feeding.findOne({ _id: req.query._id }, function (err, feeding) {
 
         if (err) {
             console.log(err);
@@ -26,23 +50,21 @@ exports.get_feedings_create = function (req, res) {
 }
 
 exports.post_feedings_create = function (req, res) {
-// dateFormat npm package is used here -- https://www.npmjs.com/package/dateformat
-var dateFormat = require('dateformat');
-var today=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-    let newFeedings = new feedings({
+   let today = new Date();
+    let newFeedings = new Feeding({
         Date: today,
         Bird: req.body.Bird,
         Food: req.body.Food,
-        AmountFed:  req.body.AmountFed,
+        AmountFed: req.body.AmountFed,
         LeftoverFood: req.body.LeftoverFood,
         Medicine: req.body.Medicine,
         GoalWeight: req.body.GoalWeight,
         ActualWeight: req.body.ActualWeight,
         WeatherConditions: req.body.WeatherConditions,
         Feeder: req.body.Feeder,
-        Comments: req.body.Comments,   
+        Comments: req.body.Comments,
     });
-console.log(newFeedings)
+    console.log(newFeedings)
     newFeedings.save(function (err) {
         if (err) {
             console.log(err);
@@ -69,8 +91,8 @@ exports.post_feedings_update = function (req, res) {
     })
 }
 
-exports.delete_feedings = function(req, res) {
-    feedings.findOneAndDelete({_id: req.query._id}, function(err) {
+exports.delete_feedings = function (req, res) {
+    Feeding.findOneAndDelete({ _id: req.query._id }, function (err) {
         if (err) {
             console.log(err);
         } else {
@@ -88,17 +110,17 @@ exports.post_feedings_update = function (req, res) {
     const updateData = {
         Bird: req.body.Bird,
         Food: req.body.Food,
-        Amountfed:  req.body.AmountFed,
+        Amountfed: req.body.AmountFed,
         LeftoverFood: req.body.LeftoverFood,
         Medicine: req.body.Medicine,
         GoalWeight: req.body.GoalWeight,
         ActualWeight: req.body.ActualWeight,
         WeatherConditions: req.body.WeatherConditions,
         Feeder: req.body.Feeder,
-        Comments: req.body.Comments,   
+        Comments: req.body.Comments,
     };
     console.log(updateData);
-    feedings.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
+    Feeding.findOneAndUpdate({ _id: req.body.id }, updateData, function (err, data) {
         if (err) {
             // handle error
             console.log(err);
