@@ -8,14 +8,14 @@
         <br>
         <h1><%= title %>
           <br>
-          <a href="./feedings/create" class="btn-lg mb-2 btn-primary">+ Add Feedings</a>
+          <a href="./feedings/create" class="btn-lg mb-2 btn-primary">+ Add Feedings</a> <a href="./feedings/export"class="btn-lg mb-2 btn-success">Export</a>
         </h1>
         <br>
     <table id="feedingsTable" class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
             <td>Date</td>
-            <td>Bird</td>
+            <td>Animal</td>
             <td>Food</td>
             <td>Amount Fed</td>
             <td>Leftover Food</td>
@@ -47,7 +47,6 @@
           <% } %>
 
       </table>
-      <a href="./feedings/export">Export</a>
     </div>
 
     <% include ../partials/scripts %>
