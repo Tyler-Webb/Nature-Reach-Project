@@ -25,6 +25,21 @@ exports.get_feedings_create = function (req, res) {
     res.render('feedings/feedingscreate', { title: 'Create Feedings' });
 }
 
+exports.get_export = async function(req,res){
+    const feedings = await feedings.find({});
+
+    let csv = '';  
+    feedings.forEach((feeding) => {
+            csv += feeding.dateTime + ','
+            +feedings.animalSpecies+','
+            +feedings.food+'\r\n';  
+        });
+
+        res.header('Content-Type', 'text/csv');
+        res.attachment('output.csv');
+        return res.send(csv);
+};
+
 exports.post_feedings_create = function (req, res) {
 // dateFormat npm package is used here -- https://www.npmjs.com/package/dateformat
 var dateFormat = require('dateformat');
