@@ -71,6 +71,23 @@ exports.post_create_user = function(req, res) {
     })
 
 }
+exports.export_users = async function (req, res) {
+    let csv = '';
+    const users = await User.find({});
+
+
+    users.forEach((user) => {
+        csv += user.email + ',' +
+            user.firstName + ',' +
+            user.lastName + ',' +
+            user.registerDate + ',' +
+            user.role + '\r\n'
+    });
+    console.log(csv);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('users.csv');
+    return res.send(csv);
+}
 
 exports.delete_user = function(req,res) {
     User.findOneAndDelete({ _id: req.query._id }, function (err) {
