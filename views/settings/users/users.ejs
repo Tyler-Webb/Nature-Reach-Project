@@ -29,7 +29,7 @@
         <td><%=data[i].email%></td>
         <td><%=data[i].firstName%></td>
         <td><%=data[i].lastName%></td>
-        <td><%=data[i].registerDate%></td>
+        <td><%=data[i].registerDate.toLocaleDateString("en-US")%></td>
         <td><%=data[i].role%></td>
         <td><a href="./users/update?_id=<%= data[i]._id %>">Update</a> | <a 
           href="./users/delete?_id=<%= data[i]._id %>" 

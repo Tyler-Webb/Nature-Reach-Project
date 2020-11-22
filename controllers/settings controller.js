@@ -1,6 +1,7 @@
 const Bird = require('../models/bird');
 const Food = require('../models/food');
 const Medication = require('../models/medication');
+const User = require('../models/user');
 
 // Main get pages
 
@@ -236,3 +237,49 @@ exports.delete_med = function (req, res) {
         }
     })
 }
+
+exports.export_birds = async function (req, res) {
+    let csv = '';
+    const birds = await Bird.find({});
+    console.log(birds);
+
+    birds.forEach((bird) => {
+        csv += bird.species + ',' +
+            bird.nickName + ',' +
+            bird.nickName + '\r\n'
+    });
+    console.log(csv);
+
+    res.header('Content-Type', 'text/csv');
+    res.attachment('birds.csv');
+    return res.send(csv);
+}
+
+exports.export_meds = async function (req, res) {
+    let csv = '';
+    const meds = await Medication.find({});
+
+
+    meds.forEach((med) => {
+        csv += med.name + '\r\n'
+    });
+    console.log(csv);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('meds.csv');
+    return res.send(csv);
+}
+
+exports.export_foods = async function (req, res) {
+    let csv = '';
+    const foods = await Food.find({});
+
+
+    foods.forEach((food) => {
+        csv += food.name + '\r\n'
+    });
+    console.log(csv);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('foods.csv');
+    return res.send(csv);
+}
+
