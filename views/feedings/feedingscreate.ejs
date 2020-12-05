@@ -9,6 +9,7 @@
         <h1><%= title %></h1>
         <p>Add a new feeding to the database</p>
         <form method="POST" action="/feedings/create">
+            
             <div class="container-fluid" style="width: 18rem;">
                 <div class="form-group" col-4>
                     <select required class="form-control" name="Bird">
@@ -60,9 +61,6 @@
                         <option value="Rainy">Rainy</option>
                         <option value="Snowy">Snowy</option>
                     </select>
-                </div>
-                <div class="form-group" col-4>
-                    <input required type="text" class="form-control" placeholder="Feeder" name="Feeder">
                 </div>
                 <div class="form-group" col-4>
                     <input type="text" class="form-control" placeholder="Comments (Optional)" name="Comments">

@@ -58,7 +58,8 @@ exports.get_feedings_create = async function (req, res) {
 }
 
 exports.post_feedings_create = function (req, res) {
-    let today = new Date();
+   let today = new Date();
+   let currentUser = res.locals.user;
     let newFeedings = new Feeding({
         Date: today,
         Bird: req.body.Bird,
@@ -69,10 +70,9 @@ exports.post_feedings_create = function (req, res) {
         GoalWeight: req.body.GoalWeight,
         ActualWeight: req.body.ActualWeight,
         WeatherConditions: req.body.WeatherConditions,
-        Feeder: req.body.Feeder,
-        Comments: req.body.Comments,
+        Feeder: currentUser.firstName + " " + currentUser.lastName,
+        Comments: req.body.Comments
     });
-    console.log(newFeedings)
     newFeedings.save(function (err) {
         if (err) {
             console.log(err);
