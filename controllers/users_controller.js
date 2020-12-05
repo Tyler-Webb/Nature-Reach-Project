@@ -1,6 +1,7 @@
 const User = require('../models/user');
 
 exports.get_users = function(req, res) {
+    if (locals.user.role === "Admin") { 
     User.find({}, function (err, users) {
         if (err) {
             console.error(err);
@@ -8,13 +9,17 @@ exports.get_users = function(req, res) {
             res.render('settings/users/users', { data: users });
         }
     })
+    }
 }
 
 exports.get_create_user = function(req,res) {
+    if (locals.user.role === "Admin") { 
     res.render('settings/users/userscreate');
+    }
 }
 
 exports.get_update_user = function(req,res) {
+    if (locals.user.role === "Admin") { 
     User.findOne({ _id: req.query._id }, function (err, user) {
 
         if (err) {
@@ -23,6 +28,7 @@ exports.get_update_user = function(req,res) {
             res.render('settings/users/usersupdate', { data: user, title: 'Update User' });
         }
     });
+    }
 }
 
 exports.post_update_user = function(req,res) {
