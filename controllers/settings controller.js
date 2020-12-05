@@ -5,27 +5,37 @@ const User = require('../models/user');
 
 // Main get pages
 
+
 exports.get_settings = function (req, res) {
+    if (locals.user.role === "Admin") { 
     res.render('settings/settings', { title: 'Settings' });
+    } 
 }
 
 // Create get pages
 
 exports.get_create_bird = function (req, res) {
+    if (locals.user.role === "Admin") { 
     res.render('settings/birds/birdscreate', { title: 'Create Bird' });
+    }
 }
 
 exports.get_create_food = function (req, res) {
+    if (locals.user.role === "Admin") { 
     res.render('settings/foods/foodscreate', { title: 'Create Food' });
+    }
 }
 
 exports.get_create_medication = function (req, res) {
+    if (locals.user.role === "Admin") { 
     res.render('settings/meds/medscreate', { title: 'Create Meds' });
+    }
 }
 
 // Update get pages
 
 exports.get_birds_update = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Bird.findOne({ _id: req.query._id }, function (err, bird) {
 
         if (err) {
@@ -35,8 +45,10 @@ exports.get_birds_update = function (req, res) {
         }
     });
 }
+}
 
 exports.get_foods_update = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Food.findOne({ _id: req.query._id }, function (err, food) {
 
         if (err) {
@@ -45,9 +57,11 @@ exports.get_foods_update = function (req, res) {
             res.render('settings/foods/foodsupdate', { data: food, title: 'Update Food' });
         }
     });
+    }
 }
 
 exports.get_meds_update = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Medication.findOne({ _id: req.query._id }, function (err, med) {
 
         if (err) {
@@ -56,6 +70,7 @@ exports.get_meds_update = function (req, res) {
             res.render('settings/meds/medsupdate', { data: med, title: 'Update Medication' });
         }
     });
+    }
 }
 
 //Update post pages
@@ -98,7 +113,7 @@ exports.post_foods_update = function (req, res) {
 };
 
 exports.post_meds_update = function (req, res) {
-
+    
     const updateData = {
         name: req.body.name
     };
@@ -126,7 +141,6 @@ exports.get_birds = function (req, res) {
 }
 
 exports.post_create_bird = function (req, res) {
-
     let enabled = false;
     if (req.body.enabled == 'on') {
         enabled = true;
@@ -179,6 +193,7 @@ exports.post_create_med = function (req, res) {
 }
 
 exports.get_birds = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Bird.find({}, function (err, birds) {
         if (err) {
             console.error(err);
@@ -186,9 +201,11 @@ exports.get_birds = function (req, res) {
             res.render('settings/birds/birds', { data: birds });
         }
     })
+    }
 }
 
 exports.get_foods = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Food.find({}, function (err, foods) {
         if (err) {
             console.error(err);
@@ -196,9 +213,11 @@ exports.get_foods = function (req, res) {
             res.render('settings/foods/foods', { data: foods });
         }
     })
+    }
 }
 
 exports.get_meds = function (req, res) {
+    if (locals.user.role === "Admin") { 
     Medication.find({}, function (err, meds) {
         if (err) {
             console.error(err);
@@ -206,6 +225,7 @@ exports.get_meds = function (req, res) {
             res.render('settings/meds/meds', { data: meds });
         }
     })
+    }
 }
 
 exports.delete_bird = function (req, res) {
@@ -282,4 +302,3 @@ exports.export_foods = async function (req, res) {
     res.attachment('foods.csv');
     return res.send(csv);
 }
-
