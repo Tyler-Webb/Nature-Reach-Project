@@ -7,69 +7,97 @@ const User = require('../models/user');
 
 
 exports.get_settings = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    res.render('settings/settings', { title: 'Settings' });
-    } 
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        res.render('settings/settings', { title: 'Settings' });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
+    }
 }
 
 // Create get pages
 
 exports.get_create_bird = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    res.render('settings/birds/birdscreate', { title: 'Create Bird' });
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        res.render('settings/birds/birdscreate', { title: 'Create Bird' });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 exports.get_create_food = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    res.render('settings/foods/foodscreate', { title: 'Create Food' });
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        res.render('settings/foods/foodscreate', { title: 'Create Food' });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 exports.get_create_medication = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    res.render('settings/meds/medscreate', { title: 'Create Meds' });
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        res.render('settings/meds/medscreate', { title: 'Create Meds' });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 // Update get pages
 
 exports.get_birds_update = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Bird.findOne({ _id: req.query._id }, function (err, bird) {
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Bird.findOne({ _id: req.query._id }, function (err, bird) {
 
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('settings/birds/birdsupdate', { data: bird, title: 'Update Bird' });
-        }
-    });
-}
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('settings/birds/birdsupdate', { data: bird, title: 'Update Bird' });
+            }
+        });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
+    }
 }
 
 exports.get_foods_update = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Food.findOne({ _id: req.query._id }, function (err, food) {
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Food.findOne({ _id: req.query._id }, function (err, food) {
 
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('settings/foods/foodsupdate', { data: food, title: 'Update Food' });
-        }
-    });
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('settings/foods/foodsupdate', { data: food, title: 'Update Food' });
+            }
+        });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 exports.get_meds_update = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Medication.findOne({ _id: req.query._id }, function (err, med) {
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Medication.findOne({ _id: req.query._id }, function (err, med) {
 
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('settings/meds/medsupdate', { data: med, title: 'Update Medication' });
-        }
-    });
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('settings/meds/medsupdate', { data: med, title: 'Update Medication' });
+            }
+        });
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
@@ -113,7 +141,7 @@ exports.post_foods_update = function (req, res) {
 };
 
 exports.post_meds_update = function (req, res) {
-    
+
     const updateData = {
         name: req.body.name
     };
@@ -193,38 +221,50 @@ exports.post_create_med = function (req, res) {
 }
 
 exports.get_birds = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Bird.find({}, function (err, birds) {
-        if (err) {
-            console.error(err);
-        } else {
-            res.render('settings/birds/birds', { data: birds });
-        }
-    })
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Bird.find({}, function (err, birds) {
+            if (err) {
+                console.error(err);
+            } else {
+                res.render('settings/birds/birds', { data: birds });
+            }
+        })
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 exports.get_foods = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Food.find({}, function (err, foods) {
-        if (err) {
-            console.error(err);
-        } else {
-            res.render('settings/foods/foods', { data: foods });
-        }
-    })
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Food.find({}, function (err, foods) {
+            if (err) {
+                console.error(err);
+            } else {
+                res.render('settings/foods/foods', { data: foods });
+            }
+        })
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
 exports.get_meds = function (req, res) {
-    if (locals.user.role === "Admin") { 
-    Medication.find({}, function (err, meds) {
-        if (err) {
-            console.error(err);
-        } else {
-            res.render('settings/meds/meds', { data: meds });
-        }
-    })
+    let currentUser = res.locals.user;
+    if (currentUser.role === "Admin") {
+        Medication.find({}, function (err, meds) {
+            if (err) {
+                console.error(err);
+            } else {
+                res.render('settings/meds/meds', { data: meds });
+            }
+        })
+    } else {
+        res.render('error');
+        console.log('You do not have permission to this page.')
     }
 }
 
