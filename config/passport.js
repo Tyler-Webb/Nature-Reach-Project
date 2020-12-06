@@ -12,8 +12,8 @@ module.exports = function (passport) {
             done(err, user);
         });
     });
-    // This needs to change from signup to create users
-
+        // This needs to change from signup to create users
+    
     // =================LOCAL LOGIN ======================================
 
     passport.use('local-login', new LocalStrategy({

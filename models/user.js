@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt   = require('bcrypt-nodejs');
 const userSchema = new mongoose.Schema(
     {
         firstName: {
@@ -29,18 +29,18 @@ const userSchema = new mongoose.Schema(
         },
         passwordIsExpired: {
             type: Boolean,
-            required: false
+            required:false
         }
     },
 );
 
 // generating a hash
-userSchema.methods.generateHash = function (password) {
+userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // checks if password is valid
-userSchema.methods.validPassword = function (password) {
+userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
