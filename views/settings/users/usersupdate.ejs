@@ -9,9 +9,9 @@
         <br>
         <h1><%= title %></h1>
         <p>Update a user in the database</p>
-
+     
         <form action="/settings/users/update" method="post">
-            <input type="hidden" name="id" value="<%= data._id %>" />
+            <input type="hidden" name="id" value="<%= data._id %>"/>
             <div class="container-fluid" style="width: 18rem;">
                 <div class="form-group" col-4>
                     <label>Email</label>
@@ -32,15 +32,15 @@
                 <div class="form-group" col-4>
                     <label>Role</label>
                     <br>
-                    <select name="role" id="role">
+                    <select name = "role" id= "role">
                         <option value="user">User</option>
                         <option value="Admin">Admin</option>
                     </select>
                 </div>
                 <button type="submit" class="btn mt-1 btn-primary">Update</button>
-        </form>
-    </div>
-    </div>
+            </form>
+        </div>
+        </div>
     </div>
     <% include ../../partials/scripts %>
 </body>
