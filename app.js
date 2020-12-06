@@ -28,6 +28,8 @@ app.use(bodyParser.urlencoded({  extended: true,}));
 app.use(bodyParser.json());
 app.use(cookieParser()); // read cookies (needed for auth)
 
+app.use("/public", express.static(__dirname + "/public"));
+
 //devkey is stored here.. maybe move to the ENV file?
 app.use(session({  secret: 'devkey',  resave: true,  saveUninitialized: true,})); // required for passport
 app.use(passport.initialize());
