@@ -49,12 +49,12 @@ exports.get_feedings_update = function (req, res) {
 }
 
 exports.get_feedings_create = async function (req, res) {
-    const birds = await Bird.find({enabled: true});
+    const birds = await Bird.find({ enabled: true });
     const foods = await Food.find({});
     const meds = await Medication.find({});
 
-    res.render('feedings/feedingscreate', 
-    { birds: birds, foods: foods, meds: meds, title: 'Add a Feeding' });
+    res.render('feedings/feedingscreate',
+        { birds: birds, foods: foods, meds: meds, title: 'Add a Feeding' });
 }
 
 exports.post_feedings_create = function (req, res) {
